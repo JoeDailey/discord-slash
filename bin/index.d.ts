@@ -7,3 +7,5 @@ export declare class Slash {
     execute(interaction: CommandInteraction): Promise<void>;
     toJSON(): RESTPostAPIApplicationCommandsJSONBody[];
 }
+export { SlashCommand } from "./command";
+export { SlashSubcommand } from "./subcommand";

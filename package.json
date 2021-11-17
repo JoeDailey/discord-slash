@@ -2,9 +2,9 @@
   "name": "discord-slash",
   "version": "1.0.0",
   "description": "Slash Command helpers",
-  "main": "index.ts",
   "author": "Joe Dailey <josephldailey@gmail.com>",
   "license": "MIT",
+  "main": "src/index.js",
   "files": ["bin/**/*"],
   "scripts": {
     "start": "ts-node index.ts",

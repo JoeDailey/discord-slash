@@ -18,3 +18,6 @@ export class Slash {
     return [...this.commands.values()].map(cmd => cmd.toJSON());
   }
 }
+
+export { SlashCommand } from "./command";
+export { SlashSubcommand } from "./subcommand";
