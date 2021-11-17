@@ -4,7 +4,7 @@
   "description": "Slash Command helpers",
   "author": "Joe Dailey <josephldailey@gmail.com>",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "bin/index.js",
   "files": ["bin/**/*"],
   "scripts": {
     "start": "ts-node index.ts",
