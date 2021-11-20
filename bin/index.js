@@ -1,18 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SlashSubcommand = exports.SlashCommand = exports.Slash = void 0;
-class Slash {
-    constructor(...commands) {
-        this.commands = new Map(commands);
-    }
-    async execute(interaction) {
-        this.commands.get(interaction.commandName).execute(interaction);
-    }
-    toJSON() {
-        return [...this.commands.values()].map(cmd => cmd.toJSON());
-    }
-}
-exports.Slash = Slash;
+exports.SlashSubcommand = exports.SlashCommand = exports.Slash = exports.install = void 0;
+var install_1 = require("./install");
+Object.defineProperty(exports, "install", { enumerable: true, get: function () { return install_1.install; } });
+var root_1 = require("./root");
+Object.defineProperty(exports, "Slash", { enumerable: true, get: function () { return root_1.Slash; } });
 var command_1 = require("./command");
 Object.defineProperty(exports, "SlashCommand", { enumerable: true, get: function () { return command_1.SlashCommand; } });
 var subcommand_1 = require("./subcommand");
