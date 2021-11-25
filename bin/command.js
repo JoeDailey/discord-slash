@@ -15,7 +15,7 @@ class SlashCommand {
         var _a;
         const subcmd = interaction.options.getSubcommand();
         if (subcmd) {
-            return (_a = this.subcommands.get(subcmd)) === null || _a === void 0 ? void 0 : _a.execute(interaction);
+            return await ((_a = this.subcommands.get(subcmd)) === null || _a === void 0 ? void 0 : _a.execute(interaction));
         }
         this.handleDefault(interaction);
     }
