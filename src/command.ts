@@ -25,7 +25,7 @@ export class SlashCommand {
   public async execute(interaction: CommandInteraction) {
     const subcmd = interaction.options.getSubcommand();
     if (subcmd) {
-      return this.subcommands.get(subcmd)?.execute(interaction);
+      return await this.subcommands.get(subcmd)?.execute(interaction);
     }
 
     this.handleDefault(interaction);
