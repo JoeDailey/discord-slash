@@ -11,7 +11,8 @@
   "scripts": {
     "start": "ts-node index.ts",
     "dev": "nodemon --watch index.ts --exec ts-node index.ts",
-    "build": "tsc --build tsconfig.json",
+    "build": "rm -r bin; tsc --build tsconfig.json",
+    "rebuild": "tsc --build tsconfig.json",
     "test": "jest",
     "clean": "rm bin -r"
   },

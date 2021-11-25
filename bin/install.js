@@ -12,7 +12,7 @@ async function install(client, slash, onError) {
             await client.slash.execute(interaction);
         }
         catch (e) {
-            await onError(e, interaction);
+            await onError(interaction, e);
         }
     });
     const rest = new rest_1.REST({ version: '9' }).setToken(client.token);
