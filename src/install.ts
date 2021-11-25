@@ -20,7 +20,11 @@ export async function install(client: Client, slash: Slash, onError: SlashErrorH
     try {
       await client.slash.execute(interaction);
     } catch (e) {
-      await onError(interaction, e);
+      try {
+        await onError(interaction, e);
+      } catch (ee) {
+        console.error(`Error while handling ${e}`, ee);
+      }
     }
   });
 
