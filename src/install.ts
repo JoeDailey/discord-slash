@@ -1,8 +1,7 @@
 import { REST } from "@discordjs/rest"
-import { Client, Interaction } from "discord.js"
+import { Client, Interaction, CommandInteraction } from "discord.js"
 import { Routes } from "discord-api-types/v10";
 import { Slash } from "./root";
-import { rejects } from "assert";
 
 declare module "discord.js" {
   interface Client<Ready extends boolean = boolean> {
@@ -10,7 +9,7 @@ declare module "discord.js" {
   }
 }
 
-export type SlashErrorHandler = (interaction: Interaction, e: any) => Promise<boolean>;
+export type SlashErrorHandler = (interaction: CommandInteraction, e: any) => Promise<boolean>;
 
 export async function install(client: Client, slash: Slash, onError: SlashErrorHandler): Promise<void> {
   client.slash = slash;
