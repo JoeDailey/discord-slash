@@ -13,7 +13,7 @@ export class Slash {
   }
 
   public async execute(interaction: CommandInteraction) {
-    await this.commands.get(interaction.commandName).execute(interaction);
+    await this.commands.get(interaction.commandName)?.execute(interaction);
   }
 
   public toJSON(): RESTPostAPIApplicationCommandsJSONBody[] {

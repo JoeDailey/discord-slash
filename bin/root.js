@@ -6,7 +6,8 @@ class Slash {
         this.commands = new Map(commands);
     }
     async execute(interaction) {
-        await this.commands.get(interaction.commandName).execute(interaction);
+        var _a;
+        await ((_a = this.commands.get(interaction.commandName)) === null || _a === void 0 ? void 0 : _a.execute(interaction));
     }
     toJSON() {
         return [...this.commands.values()].map(cmd => cmd.toJSON());

@@ -8,8 +8,15 @@ class SlashCommand {
         this.descriptions = descriptions;
         this.subcommands = new Map(subcommands.map(cmd => ([cmd.name, cmd])));
     }
-    static alias(name, cmd) {
-        return [name, new SlashCommand(name, cmd.descriptions, ...cmd.subcommands.values())];
+    registers(...aliases) {
+        const aliasRegisters = aliases.map(alias => [
+            alias,
+            new SlashCommand(alias, this.descriptions, ...this.subcommands.values()),
+        ]);
+        return [
+            [this.name, this],
+            ...aliasRegisters,
+        ];
     }
     async execute(interaction) {
         var _a;
