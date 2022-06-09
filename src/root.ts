@@ -2,10 +2,12 @@ import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types/rest/v
 import { CommandInteraction } from "discord.js";
 import { SlashCommand } from "./command";
 
+export type SlashCommandRegister = [string, SlashCommand];
+
 export class Slash {
   private commands: Map<string, SlashCommand>;
   public constructor(
-    ...commands: Array<[string, SlashCommand]>
+    ...commands: Array<SlashCommandRegister>
   ) {
     this.commands = new Map(commands);
   }

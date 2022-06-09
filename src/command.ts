@@ -1,15 +1,25 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types/rest/v9";
 import { CommandInteraction } from "discord.js";
+import { SlashCommandRegister } from "./root";
 import { SlashSubcommand } from "./subcommand";
 
 export class SlashCommand {
-  public static alias(name: string, cmd: SlashCommand): [string, SlashCommand] {
-    return [name, new SlashCommand(
-      name,
-      cmd.descriptions,
-      ...cmd.subcommands.values(),
-    )];
+
+  public registers(...aliases: Array<string>): Array<SlashCommandRegister> {
+    const aliasRegisters: Array<SlashCommandRegister> = aliases.map(alias => [
+      alias,
+      new SlashCommand(
+        alias,
+        this.descriptions,
+        ...this.subcommands.values(),
+      ),
+    ]);
+
+    return [
+      [this.name, this],
+      ...aliasRegisters,
+    ]
   }
 
   readonly subcommands: Map<string, SlashSubcommand>;
