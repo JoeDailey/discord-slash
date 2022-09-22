@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SlashSubcommand = void 0;
-class SlashSubcommand {
+exports.Subcommand = void 0;
+class Subcommand {
     constructor(name, description, execute, build) {
         this.name = name;
         this.description = description;
@@ -9,8 +9,8 @@ class SlashSubcommand {
         this.build = build;
     }
     static alias(name, cmd) {
-        return new SlashSubcommand(name, cmd.description, cmd.execute, cmd.build);
+        return new Subcommand(name, cmd.description, cmd.execute, cmd.build);
     }
 }
-exports.SlashSubcommand = SlashSubcommand;
-//# sourceMappingURL=subcommand.js.map
+exports.Subcommand = Subcommand;
+//# sourceMappingURL=Subcommand.js.map

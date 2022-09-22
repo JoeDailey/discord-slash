@@ -1,22 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SlashCommand = void 0;
+exports.Command = void 0;
 const builders_1 = require("@discordjs/builders");
-class SlashCommand {
-    constructor(name, descriptions, ...subcommands) {
+class Command {
+    constructor(name, description, handle, build, ...subcommands) {
         this.name = name;
-        this.descriptions = descriptions;
+        this.description = description;
+        this.handle = handle;
+        this.build = build;
         this.subcommands = new Map(subcommands.map(cmd => ([cmd.name, cmd])));
     }
-    registers(...aliases) {
-        const aliasRegisters = aliases.map(alias => [
-            alias,
-            new SlashCommand(alias, this.descriptions, ...this.subcommands.values()),
-        ]);
-        return [
-            [this.name, this],
-            ...aliasRegisters,
-        ];
+    static create(name, description, handle, build) {
+        return new this(name, description, handle, build);
+    }
+    static createWithSubcommands(name, description, ...subcommands) {
+        return new this(name, description, () => { throw "Base command cannot be called when subcommands are present."; }, cmd => cmd, ...subcommands);
+    }
+    static alias(name, cmd) {
+        return new Command(name, cmd.description, cmd.handle, cmd.build, ...cmd.subcommands.values());
     }
     async execute(interaction) {
         var _a;
@@ -24,15 +25,13 @@ class SlashCommand {
         if (subcmd) {
             return await ((_a = this.subcommands.get(subcmd)) === null || _a === void 0 ? void 0 : _a.execute(interaction));
         }
-        this.handleDefault(interaction);
-    }
-    handleDefault(interaction) {
-        throw new Error('Not Implemented');
+        await this.handle(interaction);
     }
     toJSON() {
         const builder = new builders_1.SlashCommandBuilder()
             .setName(this.name)
-            .setDescription(this.descriptions);
+            .setDescription(this.description);
+        this.build(builder);
         for (const [_name, subcmd] of this.subcommands) {
             builder.addSubcommand(builder => subcmd.build(builder
                 .setName(subcmd.name)
@@ -41,5 +40,5 @@ class SlashCommand {
         return builder.toJSON();
     }
 }
-exports.SlashCommand = SlashCommand;
-//# sourceMappingURL=command.js.map
+exports.Command = Command;
+//# sourceMappingURL=Command.js.map

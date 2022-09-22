@@ -1,32 +1,22 @@
 {
   "name": "discord-slash",
   "version": "1.0.0",
-  "description": "Slash Command helpers",
+  "description": "Discord.js Interaction Manager",
   "author": "Joe Dailey <josephldailey@gmail.com>",
   "license": "MIT",
   "main": "bin/index.js",
   "files": [
     "bin/**/*"
   ],
-  "scripts": {
-    "start": "ts-node index.ts",
-    "dev": "nodemon --watch index.ts --exec ts-node index.ts",
-    "build": "rm -r bin; tsc --build tsconfig.json",
-    "rebuild": "tsc --build tsconfig.json",
-    "test": "jest",
-    "clean": "rm bin -r"
-  },
   "dependencies": {
-    "@discordjs/rest": "^0.5.0",
-    "@types/node": "^17.0.41",
-    "discord-api-types": "^0.33.5",
-    "discord.js": "^13.3.1",
-    "typescript": "^4.4.4"
+    "@discordjs/rest": "^1.1.0",
+    "@types/node": "^18.7.18",
+    "discord-api-types": "^0.37.10",
+    "discord.js": "^14.4.0",
+    "typescript": "^4.8.3"
   },
-  "devDependencies": {
-    "jest": "^28.1.1",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.4.0",
-    "tsc": "^2.0.3"
+  "scripts": {
+    "build": "rm -rf bin; tsc --build tsconfig.json",
+    "clean": "rm bin -r"
   }
 }

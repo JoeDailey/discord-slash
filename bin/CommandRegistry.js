@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Slash = void 0;
-class Slash {
-    constructor(...commands) {
-        this.commands = new Map(commands);
+class CommandRegistry {
+    constructor() {
+        this.commands = new Map();
+    }
+    push(command) {
+        this.commands.set(command.name, command);
     }
     async execute(interaction) {
         var _a;
@@ -13,5 +15,5 @@ class Slash {
         return [...this.commands.values()].map(cmd => cmd.toJSON());
     }
 }
-exports.Slash = Slash;
-//# sourceMappingURL=root.js.map
+exports.default = CommandRegistry;
+//# sourceMappingURL=CommandRegistry.js.map

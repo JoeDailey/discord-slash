@@ -1,4 +1,4 @@
-export { install, SlashErrorHandler } from "./install";
-export { Slash } from "./root";
-export { SlashCommand } from "./command";
-export { SlashSubcommand } from "./subcommand";
+export { slash } from "./slash";
+export { Button } from "./Button";
+export { Command } from "./Command";
+export { Subcommand } from "./Subcommand";
