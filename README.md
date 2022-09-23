@@ -64,7 +64,7 @@ const CreateVoiceChannelButton = new Button(
 );
 ```
 
-Bot can include buttons on messages and replies.
+Bots can include buttons on messages and replies.
 ```
 await interaction.reply({
   content: "User wants to create channel",
@@ -81,4 +81,4 @@ await interaction.reply({
 
 ---
 
-This module currently only support slash commands and button interactions. More support may be added in the future. Contribution is welcome.
+This module currently only supports slash commands and button interactions. More support for other interactions may be added in the future. Contribution is welcome.
